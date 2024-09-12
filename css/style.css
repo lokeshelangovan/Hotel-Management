@@ -91,11 +91,91 @@
     color: var(--primary);
 }
 
+
+.navbar-toggler{
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    border: none;
+    background-color: transparent; /* Make sure background is transparent */
+    z-index: 1001; /* Ensure the toggle button is above other elements */
+}
+
 @media (max-width: 991.98px) {
-    .navbar-dark .navbar-nav .nav-link  {
-        margin-right: 0;
-        padding: 10px 0;
-    }
+   
+
+    /* Style for the navbar-toggler button */
+.navbar-toggler {
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    border: none;
+    background-color: transparent; /* Make sure background is transparent */
+    z-index: 1001; /* Ensure the toggle button is above other elements */
+}
+
+/* Style for the navbar-toggler icon */
+.navbar-toggler-icon {
+    background-image: url('path-to-your-white-toggle-icon.svg'); /* Ensure the icon is white */
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 30px; /* Adjust size as needed */
+    height: 30px; /* Adjust size as needed */
+}
+
+/* Ensure the navbar is positioned correctly */
+.navbar {
+    position: relative; /* Ensure proper positioning within its container */
+    z-index: 1000; /* Ensure the navbar stays on top of other elements */
+}
+
+/* Ensure the expanded navbar does not overflow */
+.collapse.navbar-collapse {
+    position: absolute; /* Position absolutely to stay within the navbar */
+    top: 100%; /* Position directly below the navbar */
+    left: 0;
+    right: 0;
+    z-index: 999; /* Ensure dropdown menu is above other elements */
+    /* margin-top: 50px; Add space to align with navbar */
+}
+
+/* Style the expanded navbar */
+.navbar-collapse.show {
+    background-color:#000000; /* Dark background color */
+    border-top: 2px solid #fea116; /* Optional: Add a border at the top */
+}
+
+/* Style the navbar items when expanded */
+.navbar-nav .nav-item .nav-link {
+    color: #ffffff; /* White text color */
+    padding: 10px 20px; /* Adjust padding for larger clickable area */
+    border-bottom: 1px solid #444; /* Optional: Add a border between items */
+}
+
+/* Change the color of the active nav link */
+.navbar-nav .nav-item .nav-link.active {
+    background-color: #fea116; /* Highlight background color for the active link */
+    color: #000000; /* Change text color to black */
+}
+
+/* Style the dropdown menu in the expanded navbar */
+.navbar-nav .nav-item .dropdown-menu {
+    background-color: #343a40; /* Dark background color for dropdown */
+    border: none; /* Remove border */
+}
+
+/* Style the dropdown items */
+.navbar-nav .nav-item .dropdown-menu .dropdown-item {
+    color: #ffffff; /* White text color */
+    padding: 10px 20px; /* Adjust padding */
+}
+
+/* Highlight the dropdown item on hover */
+.navbar-nav .nav-item .dropdown-menu .dropdown-item:hover {
+    background-color: #fea116; /* Highlight color on hover */
+    color: #000000; /* Change text color on hover */
+}
+
 }
 
 
