@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EAZY TRIP</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        /* General Styles */
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px !important;
+        }
+        
+        .logo .easy {
+            font-family: 'Montserrat', sans-serif; /* Modern and bold for 'Easy' */
+            font-size: 3rem; /* Adjust size */
+            font-weight: 700;
+            color: #28A745; /* Replace this color code with any color you prefer */
+            letter-spacing: 1px;
+        }
+        
+        .logo .trip {
+            font-family: 'Dancing Script', cursive; /* Soft and friendly for 'Trip' */
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary); /* Primary orange color */
+            margin-left: 5px;
+            letter-spacing: 2px;
+        }
+        
+        /* Add some styling to enhance the look */
+        .logo .trip:hover {
+            color: var(--light); /* Hover effect to light blue */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container1 {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;            
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        /* Room Details Styles */
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #fea116;
+        }
+
+        #roomImage {
+            max-width: 100%;
+            width: 100%; /* Adjust the width to fit its container */
+            height: 600px; /* Set a fixed height */
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            
+        }
+
+        #roomPrice {
+            font-size: 1.5rem;
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+
+        #roomDescription {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        #roomFeatures {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* Button Styles */
+        a.btn {
+            display: inline-block;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .btn-primary {
+            background-color: #fea116;
+            color: #fff;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #e6950e;
+            color: #fff;
+        }
+
+        .btn-secondary {
+            background-color: #343a40;
+            color: #fff;
+            border: none;
+        }
+
+        .btn-secondary:hover {
+            background-color: #23272b;
+            color: #fff;
+        }
+
+        /* Other Rooms Section */
+        h2 {
+            font-size: 2rem;
+            color: #333;
+            margin-top: 40px;
+        }
+
+        .other-rooms {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .room-item {
+            background-color: #f1f1f1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: calc(50% - 10px);
+        }
+
+        .other-room-image {
+            width: 100%;
+            height: auto;
+        }
+
+        .other-room-details {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .room-item h5 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        .room-item p {
+            font-size: 1rem;
+            color: #28a745;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            #roomPrice {
+                font-size: 1.25rem;
+            }
+
+            #roomDescription, #roomFeatures {
+                font-size: 0.9rem;
+            }
+
+            .room-item {
+                width: 100%;
+            }
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- header   -->
+    <div class="container-fluid bg-dark px-0">
+        <div class="row gx-0">
+            <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0">
+                <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center">
+                    <h1 class="logo">
+                        <span class="easy">Easy</span> <span class="trip">Trip</span>
+                    </h1>
+                </a>
+    
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto py-0">
+                        <a href="index.html" class="nav-item nav-link text-light" >Home</a>
+                        <a href="about.html" class="nav-item nav-link text-light">About</a>
+                        <a href="service.html" class="nav-item nav-link text-light">Packages</a>
+                        <a href="room.html" class="nav-item nav-link text-light">Rooms</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown">Pages</a>
+                            <div class="dropdown-menu rounded-0 m-0">
+                                <a href="booking.html" class="dropdown-item">Booking</a>
+                                <a href="team.html" class="dropdown-item">Our Team</a>
+                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="nav-item nav-link text-light">Contact</a>
+                        <a href="#" class="nav-item nav-link text-light" data-bs-toggle="modal" data-bs-target="#loginModal" id="loginLink"></a>
+                        <div class="nav-item dropdown d-none" id="userDropdown">
+                            <a href="#" class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown">
+                                <span style="background-color: #fea116; padding: 10px; color: black; width: 40px; height: 40px; border-radius: 50%; display: inline-block; text-align: center; line-height: 20px;" id="userInitial"></span>
+                            </a>
+                            <div class="dropdown-menu rounded-0 m-0 menus" style="min-width: 200px; ">
+                                <div class="dropdown-item" id="userDetails" style="white-space: normal;">
+                                    <p style="font-size: 40px;"><i class="bi bi-person-circle"></i></p>
+                                    <strong id="userFullName"></strong><br>
+                                    <small id="userEmail"></small>
+                                </div>
+                                <div class="dropdown-divider"></div>
+                                <a href="#" class="dropdown-item" id="logoutBtn"><i class="bi bi-box-arrow-left"></i> Logout</a>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+    
+                    <!-- Login Modal -->
+                    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="loginForm">
+                                        <div class="mb-3">
+                                            <label for="username" class="form-label">Username</label>
+                                            <input type="text" class="form-control" id="username" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="email" class="form-label">Email address</label>
+                                            <input type="email" class="form-control" id="email" required>
+                                        </div>
+                                        <div class="mb-3 position-relative">
+                                            <label for="password" class="form-label">Password</label>
+                                            <input type="password" class="form-control" id="password" required>
+                                            <i class="fas fa-eye position-absolute top-50 pt-4 end-0 translate-middle-y me-2" id="togglePassword" style="cursor: pointer;"></i>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Login</button>
+                                    </form>
+                                    <hr>
+                                    <div class="text-center">
+                                        <p>New user? <a href="#" data-bs-toggle="modal" data-bs-target="#signupModal">Sign up here</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Signup Modal -->
+                    <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="signupModalLabel">Sign Up</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="signupForm">
+                                        <div class="mb-3">
+                                            <label for="newUsername" class="form-label">Username</label>
+                                            <input type="text" class="form-control" id="newUsername" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="newEmail" class="form-label">Email address</label>
+                                            <input type="email" class="form-control" id="newEmail" required>
+                                        </div>
+                                        <div class="mb-3 position-relative">
+                                            <label for="newPassword" class="form-label">Password</label>
+                                            <input type="password" class="form-control" id="newPassword" required>
+                                            <i class="fas fa-eye position-absolute top-50 pt-4 end-0 translate-middle-y me-2" id="toggleNewPassword" style="cursor: pointer;"></i>
+                                        </div>
+                                        <div class="mb-3 position-relative">
+                                            <label for="confirmPassword" class="form-label">Confirm Password</label>
+                                            <input type="password" class="form-control" id="confirmPassword" required>
+                                            <i class="fas fa-eye position-absolute top-50 pt-4 end-0 translate-middle-y me-2" id="toggleConfirmPassword" style="cursor: pointer;"></i>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                                    </form>
+                                    <hr>
+                                    <div class="text-center">
+                                        <p>Already a member? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Sign in here</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- header end -->
+    <div class="container1 bg-white">
+        <!-- Room Details Section -->
+        <h1 id="roomTitle">Room Title</h1>
+        
+        <!-- Room Image Carousel -->
+        <div id="roomCarousel" class="carousel slide " data-bs-ride="carousel">
+            <div class="carousel-inner" id="carouselImages" style="width: 800;">
+                <!-- Images will be dynamically inserted here -->
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#roomCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#roomCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        
+        <p id="roomPrice">$0/Night</p>
+        <p id="roomAddress">Room Address</p>
+        <p id="roomDescription">Room Description</p>
+        <p id="roomFeatures"><strong>Features:</strong> Features</p>
+        <a href="#" class="btn btn-primary" id="bookButton">Book Now</a>
+    
+        <!-- Other Rooms Section -->
+        <h2 class="mt-5">Additional Options</h2>
+        <div class="other-rooms">
+            <!-- Other room items will be populated here by JavaScript -->
+        </div>
+        
+    </div>
+     <!-- Footer Start -->
+     <div class="container-fluid bg-dark text-light footer wow fadeIn mt-5 " data-wow-delay="0.1s">
+        <div class="container pb-5">
+            <div class="row g-5">
+                <div class="col-md-6 col-lg-4">
+                    <div class="bg-primary rounded p-4">
+                        <a href="index.html"> <h1 class="logo">
+                            <span class="easy">Easy</span> <span class="trip" style="color: white;">Trip</span>
+                        </h1>
+                        <p class="text-white mb-0">
+                         <a class="text-dark fw-medium"></a> Easy Trip offers seamless booking for hotels, restaurants, and resorts, with options tailored to your preferences.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <h6 class="section-title text-start text-primary text-uppercase mb-4">Contact</h6>
+                    <p class="mb-2"><i class="bi bi-geo-alt-fill me-3"></i>123 Street, Chennai, Tamil Nadu, India </p>
+                    <p class="mb-2"><i class="bi bi-telephone-fill me-3"></i>+91 9342751993</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>queries@eazytrip.in</p>
+                    
+                </div>
+                <div class="col-lg-5 col-md-12">
+                    <div class="row gy-5 g-4">
+                        <div class="col-md-6">
+                            <h6 class="section-title text-start text-primary text-uppercase mb-4">Company</h6>
+                            <a class="btn btn-link" href="about.html">About Us</a>
+                            <a class="btn btn-link" href="contact.html">Contact Us</a>
+                            <a class="btn btn-link" href="room.html">Rooms</a>                           
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="section-title text-start text-primary text-uppercase mb-4">Packages</h6>
+                            <a class="btn btn-link" href="service.html">Food & Restaurant</a>
+                            <a class="btn btn-link" href="service.html">Spa & Fitness</a>
+                            <a class="btn btn-link" href="service.html">Sports & Gaming</a>
+                            <a class="btn btn-link" href="service.html">Event & Party</a>
+                            <a class="btn btn-link" href="service.html">GYM & Yoga</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid bg-dark text-white mt-5 py-4 ">
+            <hr>
+            <div class="container text-center">
+                <p class="mb-0">&copy; <a href="#" class="text-white">Easy Trip</a>. All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+    
+    
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>    
+    <script src="js/main.js"></script>
+    <script src="./navbar.js"></script>
+    <script>
+           document.addEventListener("DOMContentLoaded", () => {
+    const roomData = {
+
+    
+        "avenue11": {
+            title: "AVENUE 11",
+            images: ["img/room0.1.jpg", "img/room0.2.jpg","img/room0.3.jpg","img/room0.4.jpg","img/room0.5.jpg"],
+            price: "₹4,500/Night",
+            address:"Address: No 11, Raghava Veera Avenue, Poes Garden, 600086 Chennai",
+            description: "Attractively located in Chennai, Avenue 11 Boutique Residences, Poes Garden Chennai offers air-conditioned rooms with free WiFi, free private parking, and room service. The property is around 1.8 miles from Spencer Plaza Mall, 2 miles from Pondy Bazaar, and 2.4 miles from Government Museum Chennai. The property provides a 24-hour front desk, a concierge service, and currency exchange for guests. At the hotel, rooms have a desk, a flat-screen TV, a private bathroom, bed linen, and towels. The rooms will provide guests with a closet and an electric tea pot. Avenue 11 Boutique Residences, Poes Garden Chennai offers a buffet or continental breakfast. The restaurant at the accommodation specializes in Chinese and Indian cuisine. Ma Chidambaram Stadium is 2.8 miles from Avenue 11 Boutique Residences, Poes Garden Chennai, while Chennai Central Train Station is 3.9 miles from the property. The nearest airport is Chennai International, 8.1 miles from the hotel, and the property offers a paid airport shuttle service.",
+            features: "3 Bed, 2 Bath, Wifi, Sea View"
+        },
+        "brick-castle": {
+            title: "Brick Castle",
+            images: ["img/room1.1.jpg","img/room1.2.jpg","img/room1.3.jpg","img/room1.4.jpg","img/room1.5.jpg","img/room1.6.jpg"],
+            price: "₹2,500/Night",
+            address: "Address: NO. 6, 9th South Cross Street Neelankarai, 600041 Chennai",
+            description: "Set in Chennai, 11 km from Indian Institute of Technology, Madras, BRICK CASTLE offers accommodation with a garden, free private parking, and a restaurant. Featuring family rooms, this property also provides guests with an outdoor pool. The accommodation features a 24-hour front desk, airport transfers, room service, and free WiFi. Complete with a private bathroom equipped with a shower and free toiletries, the units at the hotel have a flat-screen TV and air conditioning, and some rooms come with a balcony. At BRICK CASTLE, every room includes bed linen and towels. Anna University is 11 km from the accommodation, while Pondy Bazaar is 13 km away. The nearest airport is Chennai International Airport, 15 km from BRICK CASTLE.",
+            features: "Family Rooms, Outdoor Pool, Free WiFi"
+        },
+        "eco-stay": {
+            title: "ECO STAY",
+            images: ["img/room2.1.jpg","img/room2.2.jpg","img/room2.3.jpg","img/room2.4.jpg","img/room2.5.jpg"],
+            price: "₹3,800/Night",
+            description: "Conveniently located in the center of Chennai, Eco Stay Mount Road provides air-conditioned rooms with free WiFi, free private parking, and room service. This 2-star hotel offers a 24-hour front desk. The property is non-smoking throughout and is located a 7-minute walk from Spencer Plaza Mall. At the hotel, each room is equipped with a desk, a flat-screen TV, a private bathroom, bed linen, and towels. Guest rooms include a closet. Ma Chidambaram Stadium is 1.8 miles from Eco Stay Mount Road, while Government Museum Chennai is 2.1 miles away. The nearest airport is Chennai International Airport, 7.5 miles from the accommodation.",
+            features: "3 Bed, 2 Bath, Wifi, Mountain View"
+        },
+        "floressa-randa": {
+            title: "Floressa Randa",
+            images: ["img/room3.1.jpg","img/room3.2.jpg","img/room3.3.jpg","img/room3.4.jpg","img/room3.5.jpg","img/room3.6.jpg"],
+            price: "₹3,000/Night",
+           description: "Set in Chennai, 3.7 km from Madras Medical College, Floressa Randa, Porur features views of the city. This 3-star hotel offers a concierge service and a tour desk. The accommodation offers a 24-hour front desk, airport transfers, room service and free WiFi throughout the property.\n\nAll guest rooms at the hotel come with air conditioning, a seating area, a flat-screen TV with satellite channels, a safety deposit box and a private bathroom with a bidet, a hairdryer and slippers. Rooms are equipped with a kettle, while some rooms also offer a kitchen with a microwave. At Floressa Randa, Porur all rooms are fitted with bed linen and towels.\n\nBreakfast is available every morning, and includes continental, Italian and American options. At the accommodation you will find a restaurant serving Chinese, Indian and local cuisine. Vegetarian, halal and gluten-free options can also be requested.\n\nChennai Trade Centre is 7.6 km from Floressa Randa, Porur, while St. Thomas Mount is 10 km from the property. The nearest airport is Chennai International Airport, 7 km from the hotel.",
+           address:"Address: 46 Krishnaveni Ammal Nagar 1st Main Road Iyyappanthangal (Porur) Near Sri Ramachandra Medical College, 600056 Chennai ", 
+           features: "3 Bed, 2 Bath, Wifi, Mountain View"
+        },
+        "ginger": {
+            title: "GINGER",
+            images: ["img/room4.1.webp","img/room4.2.jpg","img/room4.3.jpg"],
+            price: "₹4,200/Night",
+            description: "Discover the city of Chennai with a lean luxe stay experience at Ginger Chennai OMR. The Reimagined GINGER experience brings together the best of an elevated stay experience, combined with impeccable services at affordable prices. Located at a short distance from the airport and railway station, the hotel provides quick access to several corporate hubs, including Siruseri SIPCOT, Pacifica Tech Park, SSPDL Tech Park, ETA Techno Park, as well as many beaches, amusement parks and malls. Designed for a perfect stay, the 99 well-appointed rooms in Luxe Twin and Luxe Queen categories offer a wide range of amenities like Wi-Fi, smart LED television with satellite channels, an electric kettle, packaged drinking water, a shower and more. The hotel also features Qmin - our signature diner and a fitness centre.",
+            address:"Address: Toll Plaza, 10, OMR, Navalur, Chennai, Tamil Nadu 600130",
+            features: "3 Bed, 2 Bath, Wifi, Mountain View"
+        },
+        "gokulam-park-sabari": {
+            title: "Gokulam Park Sabari",
+            images: ["img/room5.1.jpg","img/room5.2.jpg","img/room5.3.jpg","img/room5.4.jpg","img/room5.5.jpg","img/room5.6.jpg"],
+            price: "₹3,500/Night",
+            description: "Hotel Gokulam Park Sabari-OMR, a 3-star hotel located in Navalur and very close to Chennai Siruseri SIPCOT IT Park, is the first and nearest hotel to Asia's Largest SEZ, Chennai Sipcot Siruseri, IT Expressway, Chennai. Located at the heart of IT Hall on OMR, Gokulam Park Sabari OMR Chennai Siruseri SIPCOT features an outdoor swimming pool, high-speed free Wi-Fi, and a well-equipped gymnasium. In close proximity to Sipcot IT Park and corporate empires like TCS, HCL, Hexaware, Nokia, Polaris, Valeo, Emerson, Aspire Systems, and hospitals like Chettinad Health City, Global Hospital, Apollo Hospitals, and many others, the hotel is located close to Tamil Nadu’s biggest business district of OMR. It has the latest state-of-the-art technology, complete with modern and luxurious amenities. It has been conceived keeping in mind all the details for the convenience of discerning IT Expressway guests.",
+            address:"Address: 33, IT Expressway OMR Near Siruseri Sipcot IT Park, Chennai - 600130.",
+            features: "3 Bed, 2 Bath, Wifi, Mountain View"
+        },
+        "hotel-metro-mannar": {
+        title: "HOTEL METRO MANNAR",
+        images: ["img/room6.1.jpg", "img/room6.2.jpg", "img/room6.3.jpg", "img/room6.4.jpg"],
+        price: "₹3,000 /Night",
+        address:"Address: Gate No.4, Metro Manor, 97, Raja Muthiah Rd, opposite Nehru Stadium, Periyamedu, Choolai, Chennai, Tamil Nadu 600003\n\nA 13-minute walk from Chennai Central railway station",  
+        description: " This straightforward budget hotel on a busy street with shops is 4 km from the Government Museum and 6 km from Marina Beach. The down-to-earth rooms provide complimentary Wi-Fi and flat-screen TVs. Room service is offered. Kids age 8 and under stay at no extra cost with an adult.\n\nA casual restaurant serves international dishes. There's also an on-site generator. Breakfast and parking are available. Married couples are welcome.",
+        features: "4 Bed, 3 Bath, Wifi, Ocean View"
+    },
+    "hotel-park-elanza": {
+        title: "Hotel Park Elanza",
+        images: ["img/room7.1.jpg", "img/room7.2.jpg", "img/room7.3.jpg", "img/room7.4.jpg","img/room7.5.jpg","img/room7.6.jpg"],
+        price: "₹5,000/Night",
+        address: "Address: 125, Valluvar Kottam High Road, Nungambakkam Nungambakkam, Nungambakkam, 600034 Chennai ",
+        description: "Conveniently located in Chennai, Hotel Park Elanza Chennai offers air-conditioned rooms with free WiFi, free private parking and room service. With an outdoor swimming pool, the property also has a shared lounge, as well as a terrace. The accommodation provides a 24-hour front desk, a concierge service and currency exchange for guests. At the hotel, all rooms have a desk, a flat-screen TV, a private bathroom, bed linen and towels. At Hotel Park Elanza Chennai you will find a restaurant serving Indian, local and Asian cuisine. Vegetarian, dairy-free and halal options can also be requested. Pondy Bazaar is 2.4 km from the accommodation, while Spencer Plaza Mall is 3 km from the property. The nearest airport is Chennai International Airport, 11 km from Hotel Park Elanza Chennai. ",
+        features: "3 Bed, 2 Bath, Wifi, City View"
+    },
+    "ibis-hotel": {
+        title: "IBIS HOTEL",
+        images: ["img/room8.1.jpg", "img/room8.2.jpg", "img/room8.3.jpg", "img/room8.4.jpg","img/room8.5.jpg"],
+        price: "₹4,800/Night",
+        address: "Address: Ibis Chennai OMR is located in the IT hall, Sholinganallur on Rajiv Gandhi IT expressway and is 7 minutes from the ECR beaches.",
+        description: " This pet-friendly hotel features a fitness center, garden, terrace, and free WiFi throughout the property. Rooms feature LCD TV, tea and coffee making facilities, mini-bar, walk in shower with fair trade range of bathroom amenities. HEPA filters and ozonizers ensure enhanced indoor air quality. The accommodations provides concierge service, room service.This 4-star hotel offers a 24-hour front desk. Guests can jJoin the good food mood revolution at Spice it restaurant with contactless dining and follow FSSAI guidelines, serving South Indian, Chinese comfort food combos alongside Patiala drinks, Beer buckets, choice of wines and beverages. This is the most convenient base for travelers being on the IT hall with HCL, TCS, Cognizant , Ascendas, Ramanjum and TECCI IT parks in the vicinity. Marina Mall, Phenix market city and leading healthcare centers such as Apollo Global Hospital are  conveniently located from the hotel. Chennai International Airport is 11 mi away.",
+        features: "2 Bed, 2 Bath, Wifi, Courtyard View"
+    }
+        
+    };
+
+    const resortData = {
+        "country-club-lee-crystals": {
+            title: "Country Club Lee Crystals",
+            images: ["img/resort1.1.webp","img/resort1.2.webp","img/resort1.3.webp","img/resort1.4.webp","img/resort1.5.webp","img/resort1.6.webp"],
+            address: "Address : No 2/212 Kovalam Main Road,Off Ecr Highway, Kovalam, Chennai, India, 603112",
+            price: "₹3,200/Night",
+            description: "Discover the captivating Country Club Lee Crystal in vibrant Kovalam, Chennai. Unwind in this budget-friendly hotel perfect for two travelers seeking a weekend getaway. Enjoy the relaxed coastal atmosphere, pristine beaches, and lively local markets. Indulge in luxury with an outdoor pool and fine dining at the on-site restaurant. Experience seamless hospitality with private check-in/out and book exciting tours. Retreat to air-conditioned rooms with refreshing showers, a variety of television channels, and complimentary toiletries. With friendly staff and a refreshing pool, Country Club Lee Crystal promises a remarkable stay. ",
+            features: "Beach Access, Spa, Gourmet Dining, Ocean View"
+        },
+        "green-meadows": {
+            title: "Green Meadows",
+            images: ["img/resort2.1.jpg", "img/resort2.2.jpg", "img/resort2.3.jpg", "img/resort2.4.jpg", "img/resort2.5.jpg", "img/resort2.6.jpg","img/resort2.7.jpg","img/resort2.8.jpg"],
+            address: "Address :  4/364 A, Anna Salai, Palavakkam, Chennai, Tamil Nadu, 600041 Chennai ",
+            price: "₹6,000/Night",
+            description: "Set in Chennai, 9.1 km from Indian Institute of Technology, Madras, Green Meadows Resort offers accommodation with a garden, free private parking, a restaurant and a bar. This 3-star resort offers room service, a 24-hour front desk and free WiFi. The property is non-smoking and is situated 9.2 km from Anna University. At the resort, the rooms include a desk. Complete with a private bathroom fitted with a shower and free toiletries, all guest rooms at Green Meadows Resort have a flat-screen TV and air conditioning, and selected rooms also offer a balcony. At the accommodation all rooms have bed linen and towels. A buffet, continental or vegetarian breakfast is available every morning at the property. Green Meadows Resort offers a children's playground. Pondy Bazaar is 12 km from the resort, while St. Thomas Mount is 13 km from the property. The nearest airport is Chennai International Airport, 14 km from Green Meadows Resort. ",
+            features: "Skiing, Mountain View, Spa, Fireplace"
+        },
+        "horizon-blu-inn": {
+            title: "Horizon Blu Inn",
+            images: ["img/resort3.1.jpg", "img/resort3.2.jpg", "img/resort3.3.jpg", "img/resort3.4.jpg", "img/resort3.5.jpg"],
+            address: "Address :  No;53, ocean drive,sulerikadu,vadanemmeli,-603104,Mahabalipuram, 603104 Mahabalipuram ",
+            price: "₹3,600/Night",
+            description: "Set in Mahabalipuram, 2.8 km from Vada Nemili Beach, Horizon Blu inn offers accommodation with a fitness centre, free private parking, a garden and a restaurant. Boasting room service, this property also provides guests with a water park. The accommodation provides a 24-hour front desk, airport transfers, a kids' club and free WiFi throughout the property. The hotel will provide guests with air-conditioned rooms with a desk, a kettle, a fridge, a microwave, a safety deposit box, a flat-screen TV, a terrace and a private bathroom with a bidet. At Horizon Blu inn the rooms come with bed linen and towels. At the accommodation guests are welcome to take advantage of an indoor swimming pool. You can play billiards, table tennis, and tennis at the 5-star hotel. Arignar Anna Zoological Park is 34 km from Horizon Blu inn, while Indian Institute of Technology, Madras is 38 km from the property. The nearest airport is Chennai International Airport, 44 km from the hotel. ",
+            features: "Camel Rides, Oasis, Desert Safari, Luxury Tents"
+        },
+        "mgm-beach-resorts": {
+    title: "MGM Beach Resorts",
+    images: ["img/resort4.1.jpg", "img/resort4.2.jpg", "img/resort4.3.jpg", "img/resort4.4.jpg", "img/resort4.5.jpg", "img/resort4.6.jpg", "img/resort4.7.jpg", "img/resort4.8.jpg"],
+    address: "Address: 1/74, East Coast Road, Muttukadu, 603112 Chennai",
+    price: "₹7,500/Night",
+    description: "Offering sweeping views of swaying coconut trees and the tranquil shoreline, MGM Beach Resorts features charming rooms that overlook the garden. It has a beachfront restaurant, an outdoor pool, and provides free Wi-Fi.\n\nTastefully decorated, the elegant rooms come with floor-to-ceiling windows that open out to the greenery. All the well-appointed units are equipped with a personal safe, minibar, and flat-screen cable TV.\n\nIndulge in a relaxing body massage, play a game of table tennis, or exercise at the gym. The resort also has a private beach area where guests can practice yoga.\n\nOffering beautiful views of the sea, Sea Crest Restaurant serves a spread of local and international dishes. In-room dining options are possible with room service.\n\nMGM Beach Resorts is just 50 meters from MGM Dizzee World. It is 30 km from Chennai Bus Station, 32 km from Chennai International Airport, and 35 km from Chennai Railway Station.\n\nNearby attractions:\n- DakshinaChitra Heritage Museum: 500 meters\n- Muttukadu Boat House: 2 km\n- Mayajaal Sports Complex: 2 km\n- Cholamandal Artists' Village: 10 km\n- Mahabalipuram Beach: 23 km\n- Shore Temple: 23 km\n- Five Rathas: 23 km",
+    features: "Private Beach, Yoga Sessions, Spa, Gym, Outdoor Pool, Beachfront Restaurant, Free Wi-Fi."
+      },
+      "shelter-beach-resorts": {
+    title: "Shelter Beach Resorts",
+    images: ["img/resort5.1.jpg", "img/resort5.2.jpg", "img/resort5.3.jpg", "img/resort5.4.jpg", "img/resort5.5.jpg", "img/resort5.6.jpg", "img/resort5.7.jpg", "img/resort5.8.jpg", "img/resort5.9.jpg"],
+    address: "Address: Vadanemmeli Near Crocodile Bank, 603104 Mahabalipuram",
+    price: "₹6,800/Night",
+description: "Offering an outdoor pool, Shelter Beach Resort is located near Mahabalipuram. Guests can enjoy the on-site restaurant, private beach access, and a spa bath. Free private parking is available on site.\n\nEach room has a flat-screen TV, and certain units have a seating area to relax in after a busy day. Some units include views of the sea or pool. Every room includes a private bathroom fitted with a shower. For your comfort, you will find free toiletries and a hairdryer.\n\nThere is a 24-hour front desk at the property.\n\nYou can play beach cricket and volleyball at the resort. The nearest airport is Chennai International Airport, 31 km from Shelter Beach Resort.",
+features: "Private Beach, Outdoor Pool, Spa Bath, Restaurant, Free Parking, Sea View Rooms, 24-hour Front Desk, Beach Sports"
+},
+"the-saravi-resorts": {
+    title: "The Saravi Resort",
+    images: ["img/resort6.1.jpg", "img/resort6.2.jpg", "img/resort6.3.jpg", "img/resort6.4.jpg", "img/resort6.5.jpg", "img/resort6.6.jpg","img/resort6.7.jpg","img/resort6.8.jpg"],
+    address: "Address: Re Survey No 193/8 Kottaimedu, 605104 Kottakupam",
+    price: "₹5,500/Night",
+    description: "Located in Kottakupam, 2.2 km from Serenity Beach, The Saravi Resort provides accommodation with a garden, free private parking, and a restaurant. Guests can enjoy access to an indoor swimming pool and car rental services. The resort offers a 24-hour front desk, airport transfers, room service, and free WiFi throughout the property.\n\nThe resort provides air-conditioned rooms equipped with a desk, a kettle, a minibar, a safety deposit box, a flat-screen TV, a balcony, and a private bathroom with a shower. Each room at The Saravi Resort includes bed linen and towels.\n\nA buffet, à la carte, or continental breakfast can be enjoyed at the property.\n\nGuests can participate in activities like cycling in and around Kottakupam. Auroville Beach is 2.8 km from The Saravi Resort, while Sri Aurobindo Ashram is 8.3 km away. The nearest airport is Puducherry Airport, 9 km from the resort.",
+    features: "Indoor Swimming Pool, Garden, Restaurant, Free Parking, Car Rental, Airport Transfers, Free Wi-Fi, Cycling Activities"
+}
+
+        
+    };
+
+    const restaurantData = {
+        "culinary-street": {
+    title: "27 Culinary Street",
+    images: ["img/restaurant1.1.png", "img/restaurant1.2.png", "img/restaurant1.3.png", "img/restaurant1.4.png", "img/restaurant1.5.png", "img/restaurant1.6.jpg", "img/restaurant1.7.jpg", "img/restaurant1.8.jpg"],
+    priceRange: "₹199- ₹699 per meal",
+    description: "If you're looking for mouth-watering Chinese, North Indian, Japanese, and South Indian dishes, 27 Culinary Street is an ideal choice. Located in Dwarka Colony, Mylapore, Chennai, this theme restaurant offers a lively atmosphere with unique table designs, including car-shaped tables, which are a favorite among kids. The well-lit space features separate counters for chaat, dim sum, desserts, and more.\n\nThe restaurant's buffet menu boasts a diverse array of North Indian, Chinese, Japanese, and South Indian delicacies. Signature dishes include Chocolate Pani Puri, Pasta, Momos, Chicken Wings, Prawns, Mongolian dishes, and Chicken Banjara. The starters are a highlight, with offerings like Malai Chicken, Fish Fingers, Tangri Kabab, Cheese Potato, and Veg Crispy Corn. Live counters for Dosa, Momos, Chaat, and hot Jalebis add to the dining experience.\n\nThe restaurant is known for its exceptional food and welcoming ambiance. The staff is courteous and friendly, ensuring a pleasant dining experience. The Branch Manager, Mr. Su Kalyan, is dedicated to providing great service, even during busy hours. Reservations are recommended, especially on weekends, due to the restaurant's popularity.",
+    features: "Seafood, Local Cuisine, Ocean View, Fine Dining, Buffet, Live Counters, Family-Friendly",
+    address: "Address: 27, 27/28, Dr. Radha Krishnan Salai, Dwarka Colony, Mylapore, Chennai, Tamil Nadu 600004"
+},
+        
+        "asian-station": {
+    title: "Asian Station",
+    images: ["img/restaurant2.1.jpg", "img/restaurant2.2.jpg", "img/restaurant2.3.jpg", "img/restaurant2.4.jpg", "img/restaurant2.5.jpg", "img/restaurant2.6.jpg"],
+    priceRange: "₹99 - ₹699 per meal",
+    description: "Asia Station is the perfect destination for those craving authentic Pan-Asian cuisine in Chennai. Located in Shanthi Colony, Anna Nagar, this restaurant offers a delightful dining space with warm interiors and an inviting ambience. Known for its lavish buffet spread and a la carte menu, Asia Station’s chefs specialize in creating mouth-watering Pan-Asian dishes, including Chinese, Korean, and Burmese delicacies.\n\nEnjoy live interactive kitchens and big live counters where chefs prepare dishes right in front of you. Signature dishes include Chicken Dimsum, Fish Pepper Garlic dry, Drums of Heaven, and Prawns Hunan Dimsum. For the main course, favorites like Governor’s Chicken, Fish Sichuan Chilli Sauce, and Lamb Massaman Curry are highly recommended. Pair your meal with refreshing mocktails like Kryptonite and Taengmo Martini. Desserts such as Honey Noodles, Chocolate Rolls with Vanilla Ice Cream, and Mango Pudding make for a sweet ending.\n\nWhether it’s a casual meal with family or a special dinner, Asia Station ensures a memorable dining experience with its cozy ambience and scenic views. Teppanyaki Bar is available during dinner hours.",
+    features: "Pan-Asian Cuisine, Live Cooking Counters, Lavish Buffet, A La Carte Menu, Family-Friendly, Interactive Kitchen, Cozy Ambience",
+    address: "Address: 17, 24, 3rd St, Lapis Lagoon, AA Block, Shanthi Colony, Anna Nagar, Chennai, Tamil Nadu 600040"
+},
+
+        "bombay-brasserie": {
+    title: "Bombay Brasserie",
+    priceRange: "₹245 - ₹675 per meal",
+    description: "Bombay Brasserie offers a delightful culinary experience with a diverse menu that includes coffee, desserts, biryani, fast food, finger food, kebabs, and thali options. Located in the heart of Chennai, it caters to both vegetarian and non-vegetarian preferences, with Halal meat available. Enjoy the delicious tandoori dishes or a special candlelight dinner while seated in a family-friendly indoor setting.",
+    features: "Exotic Cuisine, Indoor Seating, Family Friendly, Tandoori Dishes, Veg and Non-Veg Options, Halal Meat, Wheelchair Accessible",
+    address: "Address: 77, 1st Main Road, Gandhinagar, Adyar Circle, Chennai - 600020",
+    images: ["img/restaurant3.1.jpeg", "img/restaurant3.2.jpg", "img/restaurant3.3.webp", "img/restaurant3.4.png", "img/restaurant3.5.png", "img/restaurant3.6.png", "img/restaurant3.7.png", "img/restaurant3.8.png", "img/restaurant3.9.png", "img/restaurant3.10.png"]
+},
+"coal-barbeque": {
+   title: "Coal Barbeque",
+   priceRange: "$699 per meal",
+    description: "Are you looking for the best buffet or BBQ restaurant in town? We have delighted over half a million customers since our launch in 2015. With over 100 dishes on the menu, live grill on the table, and multiple live counters, Coal Barbecues is the perfect place to celebrate your special occasion. Whether it's an office team outing, birthday or anniversary celebration, or a reunion with friends, our staff is ready to make your day magical. Our menu features global cuisine with a special focus on Indian, American, Mediterranean, and Southeast Asian dishes. With a live grill on every table, you can barbecue vegetables and meats exactly the way you like. We also offer a variety of live counters, from main course to desserts, with chefs available to customize dishes to your taste.",
+    features: "Buffet, Live Grill on Table, Over 100 Dishes, Global Cuisine, Live Counters, Vegan and Paleo Options, Customizable Dishes, Ideal for Celebrations",
+    address: "Address: 40, Bazullah Rd, Rama Kamath Puram, T. Nagar, Chennai, Tamil Nadu 600017",
+    images: ["img/restaurant4.1.jpg", "img/restaurant4.2.jpg", "img/restaurant4.3.jpg", "img/restaurant4.4.jpg", "img/restaurant4.5.jpg", "img/restaurant4.6.webp", "img/restaurant4.7.webp", "img/restaurant4.8.webp",]
+},
+"house-of-anapoorna": {
+    title: "House of Anapoorna",
+    priceRange: "$33 - $132 per meal",
+    description: "House of Annapoorna was founded in November 2020 with a mission to serve healthy, South Indian, vegetarian food at affordable prices. We take pride in serving nutritious and tasty authentic food that echoes the preparations of a typical South Indian household. Whether you are looking for a wholesome breakfast or a satisfying meal, our menu features traditional South Indian favorites made with fresh, high-quality ingredients.",
+    features: "Healthy Food, South Indian Cuisine, Vegetarian Only, Affordable Prices, Family Friendly, Indoor Seating, Authentic Taste, Nutritious Meals",
+    address: "Address: #4, 8, W Tank St, Lalitha Nagar, Thiruvanmiyur, Chennai, Tamil Nadu 600041. Phn - 7550042989.",    
+    images: ["img/restaurant5.1.JPG", "img/restaurant5.2.jpg", "img/restaurant5.3.jpg", "img/restaurant5.4.jpg", ]
+},
+"smoke-hub": {
+    title: "Smoke Hub",
+    priceRange: "$799 per meal",
+    description: "Unlike any other barbeque in town, Smoke Hub offers fully customized dishes to suit customer preferences. We take pride in being the first barbeque restaurant that also serves delightful Chinese starters. With an extensive menu of starters, main courses, and desserts, we cater to all ages and tastes, ensuring everyone enjoys their meal. Our restaurant is perfect for weekend dinners, cheat meals, family get-togethers, and corporate dining. Additionally, we offer unique attractions like VR games for both adults and children, a kid's play area, and fun activities such as magic mirrors. Our buffets feature not only barbeque starters but also Chinese starters, providing a gourmet experience like no other.",
+    features: "Customized Barbeque Dishes, Chinese Starters, VR Games, Kid's Play Area, Family Friendly, Extensive Menu, Indoor Seating, Buffets, Desserts and Beverages, Wheelchair Accessible",
+    address: "Door No. 5&6, 4th Floor, Prakasam Rd, Chennai, Tamil Nadu 600017",
+    images: ["img/restaurant6.1.webp", "img/restaurant6.2.webp", "img/restaurant6.3.webp", "img/restaurant6.4.webp", "img/restaurant6.5.webp", "img/restaurant6.6.webp", "img/restaurant6.7.webp", ]
+},
+
+    };
+
+    
+
+document.querySelector("#bookButton").addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent default anchor behavior
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const roomParam = urlParams.get("room");
+    const resortParam = urlParams.get("resort");
+    const restaurantParam = urlParams.get("restaurant");
+
+    let selectedTitle = "";
+    let selectedPrice = "";
+
+    if (roomParam && roomData[roomParam.toLowerCase()]) {
+        selectedTitle = roomData[roomParam.toLowerCase()].title;
+        selectedPrice = roomData[roomParam.toLowerCase()].price;
+    } else if (resortParam && resortData[resortParam.toLowerCase()]) {
+        selectedTitle = resortData[resortParam.toLowerCase()].title;
+        selectedPrice = resortData[resortParam.toLowerCase()].price;
+    } else if (restaurantParam && restaurantData[restaurantParam.toLowerCase()]) {
+        selectedTitle = restaurantData[restaurantParam.toLowerCase()].title;
+        selectedPrice = restaurantData[restaurantParam.toLowerCase()].priceRange;
+    }
+
+    console.log("Selected Title:", selectedTitle);
+    console.log("Selected Price:", selectedPrice);
+
+    if (selectedTitle && selectedPrice) {
+        // Navigate to booking.html with the selected details as URL parameters
+        window.location.href = `booking.html?room=${encodeURIComponent(selectedTitle)}&cost=${encodeURIComponent(selectedPrice)}`;
+    }
+});
+
+   
+
+    function updateRoomDetails(room) {
+    const roomTitle = document.querySelector("#roomTitle");
+    const roomCarousel = document.querySelector("#carouselImages");
+    const roomPrice = document.querySelector("#roomPrice");
+    const roomAddress = document.querySelector('#roomAddress');
+    const roomDescription = document.querySelector("#roomDescription");
+    const roomFeatures = document.querySelector("#roomFeatures");
+
+    // Fetch the images array from the selected room
+    const images = roomData[room].images;
+
+    // Check if images is defined and is an array
+    if (Array.isArray(images)) {
+        // Clear previous carousel items
+        roomCarousel.innerHTML = "";
+
+        // Populate the carousel with images
+        images.forEach((imgSrc, index) => {
+            const isActive = index === 0 ? "active" : "";
+            roomCarousel.innerHTML += `
+                <div class="carousel-item ${isActive}">
+                    <img src="${imgSrc}" class="d-block w-100" alt="Room Image ${index + 1}">
+                </div>
+            `;
+        });
+    } else {
+        console.error("Images array for room", room, "is undefined or not an array.");
+    }
+
+    // Update room details
+    roomTitle.textContent = roomData[room].title;
+    roomPrice.textContent = roomData[room].price;
+    roomAddress.textContent = roomData[room].address;
+    roomDescription.textContent = roomData[room].description;
+    roomFeatures.textContent = `Features: ${roomData[room].features}`;
+}
+
+
+function displayOtherRooms(currentRoom) {
+    const otherRoomsContainer = document.querySelector(".other-rooms");
+    otherRoomsContainer.innerHTML = "";
+
+    for (const room in roomData) {
+        if (room !== currentRoom) {
+            const roomItem = document.createElement("div");
+            roomItem.classList.add("room-item");
+
+            // Use the first image from the images array for the room
+            const firstImage = Array.isArray(roomData[room].images) ? roomData[room].images[0] : '';
+
+            roomItem.innerHTML = `
+                <img src="${firstImage}" alt="${roomData[room].title}" class="other-room-image">
+                <div class="other-room-details">
+                    <h5>${roomData[room].title}</h5>
+                    <p>${roomData[room].price}</p>
+                    <a href="room-details.html?room=${room}" class="btn btn-secondary">View Details</a>
+                </div>
+            `;
+
+            otherRoomsContainer.appendChild(roomItem);
+        }
+    }
+}
+
+
+function updateResortDetails(resort) {
+    const roomTitle = document.querySelector("#roomTitle");
+    const roomCarousel = document.querySelector("#carouselImages");
+    const roomPrice = document.querySelector("#roomPrice");
+    const roomAddress = document.querySelector('#roomAddress');
+    const roomDescription = document.querySelector("#roomDescription");
+    const roomFeatures = document.querySelector("#roomFeatures");
+
+    // Fetch the images array from the selected room
+    const images = resortData[resort].images;
+
+    // Check if images is defined and is an array
+    if (Array.isArray(images)) {
+        // Clear previous carousel items
+        roomCarousel.innerHTML = "";
+
+        // Populate the carousel with images
+        images.forEach((imgSrc, index) => {
+            const isActive = index === 0 ? "active" : "";
+            roomCarousel.innerHTML += `
+                <div class="carousel-item ${isActive}">
+                    <img src="${imgSrc}" class="d-block w-100" alt="Room Image ${index + 1}">
+                </div>
+            `;
+        });
+    } else {
+        console.error("Images array for room", resort, "is undefined or not an array.");
+    }
+
+    // Update room details
+    roomTitle.textContent = resortData[resort].title;
+    roomPrice.textContent = resortData[resort].price;
+    roomAddress.textContent = resortData[resort].address;
+    roomDescription.textContent = resortData[resort].description;
+    roomFeatures.textContent = `Features: ${resortData[resort].features}`;
+}
+   
+
+
+   
+function displayOtherResorts(currentResort) {
+    const otherRoomsContainer = document.querySelector(".other-rooms");
+    otherRoomsContainer.innerHTML = "";
+
+    for (const resort in resortData) {
+        if (resort !== currentResort) {
+            const resortItem = document.createElement("div");
+            resortItem.classList.add("room-item");
+
+            // Use the first image from the images array for the resort
+            const firstImage = Array.isArray(resortData[resort].images) ? resortData[resort].images[0] : '';
+
+            resortItem.innerHTML = `
+                <img src="${firstImage}" alt="${resortData[resort].title}" class="other-room-image">
+                <div class="other-room-details">
+                    <h5>${resortData[resort].title}</h5>
+                    <p>${resortData[resort].price}</p>
+                    <a href="room-details.html?resort=${resort}" class="btn btn-secondary">View Details</a>
+                </div>
+            `;
+
+            otherRoomsContainer.appendChild(resortItem);
+        }
+    }
+}
+
+
+    function updateRestaurantDetails(restaurant) {
+    const restaurantTitle = document.querySelector("#roomTitle");
+    const restaurantCarousel = document.querySelector("#carouselImages");
+    const restaurantPrice = document.querySelector("#roomPrice");
+    const restaurantAddress = document.querySelector("#roomAddress");
+    const restaurantDescription = document.querySelector("#roomDescription");
+    const restaurantFeatures = document.querySelector("#roomFeatures");
+
+    // Fetch the images array from the selected restaurant
+    const images = restaurantData[restaurant].images;
+
+    // Check if images is defined and is an array
+    if (Array.isArray(images)) {
+        // Clear previous carousel items
+        restaurantCarousel.innerHTML = "";
+
+        // Populate the carousel with images
+        images.forEach((imgSrc, index) => {
+            const isActive = index === 0 ? "active" : "";
+            restaurantCarousel.innerHTML += `
+                <div class="carousel-item ${isActive}">
+                    <img src="${imgSrc}" class="d-block w-100" alt="Restaurant Image ${index + 1}">
+                </div>
+            `;
+        });
+    } else {
+        console.error("Images array for restaurant", restaurant, "is undefined or not an array.");
+    }
+
+    // Update restaurant details
+    restaurantTitle.textContent = restaurantData[restaurant].title;
+    restaurantPrice.textContent = restaurantData[restaurant].priceRange;
+    restaurantAddress.textContent = restaurantData[restaurant].address;
+    restaurantDescription.textContent = restaurantData[restaurant].description;
+    restaurantFeatures.textContent = `Features: ${restaurantData[restaurant].features}`;
+}
+
+
+function displayOtherRestaurants(currentRestaurant) {
+    const otherRoomsContainer = document.querySelector(".other-rooms");
+    otherRoomsContainer.innerHTML = "";
+
+    for (const restaurant in restaurantData) {
+        if (restaurant !== currentRestaurant) {
+            const restaurantItem = document.createElement("div");
+            restaurantItem.classList.add("room-item");
+
+            // Use the first image from the images array for the restaurant
+            const firstImage = Array.isArray(restaurantData[restaurant].images) ? restaurantData[restaurant].images[0] : '';
+
+            restaurantItem.innerHTML = `
+                <img src="${firstImage}" alt="${restaurantData[restaurant].title}" class="other-room-image">
+                <div class="other-room-details">
+                    <h5>${restaurantData[restaurant].title}</h5>
+                    <p>${restaurantData[restaurant].priceRange}</p>
+                    <a href="room-details.html?restaurant=${restaurant}" class="btn btn-secondary">View Details</a>
+                </div>
+            `;
+
+            otherRoomsContainer.appendChild(restaurantItem);
+        }
+    }
+}
+
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const resortParam = urlParams.get("resort");
+    const roomParam = urlParams.get("room");
+    const restaurantParam = urlParams.get("restaurant");
+
+    if (restaurantParam && restaurantData[restaurantParam.toLowerCase()]) {
+        updateRestaurantDetails(restaurantParam.toLowerCase());
+        displayOtherRestaurants(restaurantParam.toLowerCase());
+    } else if (resortParam && resortData[resortParam.toLowerCase()]) {
+        updateResortDetails(resortParam.toLowerCase());
+        displayOtherResorts(resortParam.toLowerCase());
+    } else if (roomParam && roomData[roomParam.toLowerCase()]) {
+        updateRoomDetails(roomParam.toLowerCase());
+        displayOtherRooms(roomParam.toLowerCase());
+    } else {
+        // Default behavior, fallback to displaying a room
+        updateRoomDetails("junior-suite");
+        displayOtherRooms("junior-suite");
+    }
+});
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>EAZY TRIP</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">  
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Cost Display Styling */
+#roomCost {
+    font-size: 1.25rem; /* Adjust font size */
+    font-weight: bold; /* Make the text bold */
+    color: #333; /* Set text color */
+    margin-top: 10px; /* Add some space above the cost display */
+    padding: 10px; /* Add padding around the text */
+    border: 1px solid #ddd; /* Add a border */
+    border-radius: 5px; /* Round the corners of the border */
+    background-color: #f8f9fa; /* Light background color */
+    display: inline-block; /* Ensure it doesn’t take full width */
+}
+.logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px !important;
+        }
+        
+        .logo .easy {
+            font-family: 'Montserrat', sans-serif; /* Modern and bold for 'Easy' */
+            font-size: 3rem; /* Adjust size */
+            font-weight: 700;
+            color: #28A745; /* Replace this color code with any color you prefer */
+            letter-spacing: 1px;
+        }
+        
+        .logo .trip {
+            font-family: 'Dancing Script', cursive; /* Soft and friendly for 'Trip' */
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary); /* Primary orange color */
+            margin-left: 5px;
+            letter-spacing: 2px;
+        }
+        
+        /* Add some styling to enhance the look */
+        .logo .trip:hover {
+            color: var(--light); /* Hover effect to light blue */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+        <!-- Header Start -->
+        <div class="container-fluid bg-dark px-0">
+            <div class="row gx-0">
+                <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0">
+                    <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center">
+                        <h1 class="logo">
+                            <span class="easy">Easy</span> <span class="trip">Trip</span>
+                        </h1>
+                    </a>
+        
+                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav ml-auto py-0">
+                            <a href="index.html" class="nav-item nav-link" style="color: #fea116;">Home</a>
+                            <a href="about.html" class="nav-item nav-link text-light">About</a>
+                            <a href="service.html" class="nav-item nav-link text-light">Packages</a>
+                            <a href="room.html" class="nav-item nav-link text-light">Rooms</a>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown">Pages</a>
+                                <div class="dropdown-menu rounded-0 m-0">
+                                    <a href="booking.html" class="dropdown-item">Booking</a>
+                                    <a href="team.html" class="dropdown-item">Our Team</a>
+                                    <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                                </div>
+                            </div>
+                            <a href="contact.html" class="nav-item nav-link text-light">Contact</a>
+                            <a href="#" class="nav-item nav-link text-light" data-bs-toggle="modal" data-bs-target="#loginModal" id="loginLink"></a>                           
+                            <div class="nav-item dropdown d-none" id="userDropdown">
+                                <a href="#" class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown">
+                                    <span style="background-color: #fea116; padding: 10px; color: black; width: 40px; height: 40px; border-radius: 50%; display: inline-block; text-align: center; line-height: 20px;" id="userInitial"></span>
+                                </a>
+                                <div class="dropdown-menu rounded-0 m-0 menus" style="min-width: 200px; ">
+                                    <div class="dropdown-item" id="userDetails" style="white-space: normal;">
+                                        <p style="font-size: 40px;"><i class="bi bi-person-circle"></i></p>
+                                        <strong id="userFullName"></strong><br>
+                                        <small id="userEmail"></small>
+                                    </div>
+                                    <div class="dropdown-divider"></div>
+                                    <a href="#" class="dropdown-item" id="logoutBtn"><i class="bi bi-box-arrow-left"></i> Logout</a>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+        
+                        <!-- Login Modal -->
+                        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="loginForm">
+                                            <div class="mb-3">
+                                                <label for="username" class="form-label">Username</label>
+                                                <input type="text" class="form-control" id="username" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="email" class="form-label">Email address</label>
+                                                <input type="email" class="form-control" id="email"  required>
+                                            </div>
+                                            <div class="mb-3 position-relative">
+                                                <label for="password" class="form-label">Password</label>
+                                                <input type="password" class="form-control" id="password" required>
+                                                <i class="fas fa-eye position-absolute top-50 pt-4 end-0 translate-middle-y me-2" id="togglePassword" style="cursor: pointer;"></i>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Login</button>
+                                        </form>
+                                        <hr>
+                                        <div class="text-center">
+                                            <p>New user? <a href="#" data-bs-toggle="modal" data-bs-target="#signupModal">Sign up here</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- Signup Modal -->
+                        <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="signupModalLabel">Sign Up</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="signupForm">
+                                            <div class="mb-3">
+                                                <label for="newUsername" class="form-label">Username</label>
+                                                <input type="text" class="form-control" id="newUsername" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="newEmail" class="form-label">Email address</label>
+                                                <input type="email" class="form-control" id="newEmail" required>
+                                            </div>
+                                            <div class="mb-3 position-relative">
+                                                <label for="newPassword" class="form-label">Password</label>
+                                                <input type="password" class="form-control" id="newPassword" required>
+                                                <i class="fas fa-eye position-absolute top-50 pt-4 end-0 translate-middle-y me-2" id="toggleNewPassword" style="cursor: pointer;"></i>
+                                            </div>
+                                            <div class="mb-3 position-relative">
+                                                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                                                <input type="password" class="form-control" id="confirmPassword" required>
+                                                <i class="fas fa-eye position-absolute top-50 pt-4 end-0 translate-middle-y me-2" id="toggleConfirmPassword" style="cursor: pointer;"></i>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Sign Up</button>
+                                        </form>
+                                        <hr>
+                                        <div class="text-center">
+                                            <p>Already a member? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Sign in here</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- Header End -->
+        <!-- Header End -->
+
+
+        <!-- Page Header Start -->
+        <div class="container-fluid page-header mb-5 p-0" style="background-image: url(img/carousel-1.jpg);">
+            <div class="container-fluid page-header-inner py-5">
+                <div class="container text-center pb-5">
+                    <h1 class="display-3 text-white mb-3 animated slideInDown">Booking</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center text-uppercase">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">Booking</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- Page Header End -->
+
+
+        <!-- Booking Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title text-center text-primary text-uppercase">Room Booking</h6>
+                <h1 class="mb-5">Book A <span class="text-primary text-uppercase">Luxury Room</span></h1>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <div class="row g-3">
+                        <div class="col-6 text-end">
+                            <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.1s" src="img/about-1.jpg" style="margin-top: 25%;">
+                        </div>
+                        <div class="col-6 text-start">
+                            <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.3s" src="img/about-2.jpg">
+                        </div>
+                        <div class="col-6 text-end">
+                            <img class="img-fluid rounded w-50 wow zoomIn" data-wow-delay="0.5s" src="img/about-3.jpg">
+                        </div>
+                        <div class="col-6 text-start">
+                            <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.7s" src="img/about-4.jpg">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="wow fadeInUp" data-wow-delay="0.2s">
+                        <form id="bookingForm" >
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="userName" placeholder="Your Name" required>
+                                        <label for="userName">Your Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" id="useremail" placeholder="Your Email" required>
+                                        <label for="userEmail">Your Email</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating date" id="date3" data-target-input="nearest">
+                                        <input type="text" class="form-control datetimepicker-input" id="checkin" placeholder="Check In" data-target="#date3" data-toggle="datetimepicker" required/>
+                                        <label for="checkin">Check In</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating date" id="date4" data-target-input="nearest">
+                                        <input type="text" class="form-control datetimepicker-input" id="checkout" placeholder="Check Out" data-target="#date4" data-toggle="datetimepicker" required/>
+                                        <label for="checkout">Check Out</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="select3">
+                                            <option value="1">Adult 1</option>
+                                            <option value="2">Adult 2</option>
+                                            <option value="3">Adult 3</option>
+                                        </select>
+                                        <label for="select3">Select Adult</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="select2">
+                                            <option value="1">Child 1</option>
+                                            <option value="2">Child 2</option>
+                                            <option value="3">Child 3</option>
+                                        </select>
+                                        <label for="select2">Select Child</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="selectedRoom">
+                                            <option value="AVENUE 11">AVENUE 11</option>
+                                            <option value="Brick Castle">Brick Castle</option>
+                                            <option value="ECO STAY">ECO STAY</option>
+                                            <option value="Floressa Randa">Floressa Randa</option>
+                                            <option value="GINGER">GINGER</option>
+                                            <option value="Gokulam Park Sabari">Gokulam Park Sabari</option>
+                                            <option value="HOTEL METRO MANNAR">HOTEL METRO MANNAR</option>
+                                            <option value="Hotel Park Elanza">Hotel Park Elanza</option>
+                                            <option value="IBIS HOTEL">IBIS HOTEL</option>
+                                            <option value="Country Club Lee Crystals">Country Club Lee Crystals</option>
+                                            <option value="Green Meadows">Green Meadows</option>
+                                            <option value="Horizon Blu Inn">Horizon Blu Inn</option>
+                                            <option value="MGM Beach Resorts">MGM Beach Resorts</option>
+                                            <option value="Shelter Beach Resorts">Shelter Beach Resorts</option>
+                                            <option value="The Saravi Resorts">The Saravi Resorts</option>
+                                            <option value="27 Culinary Street">27 Culinary Street</option>
+                                            <option value="Asian Station">Asian Station</option>
+                                            <option value="Bombay Brasserie">Bombay Brasserie</option>
+                                            <option value="Coal Barbeque">Coal Barbeque</option>
+                                            <option value="House of Anapoorna">House of Anapoorna</option>
+                                            <option value="Smoke Hub">Smoke Hub</option>
+                                        </select>
+                                        <label for="selectedRoom">Select Room</label>
+                                    </div>
+                                    <div id="roomCost"></div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <select class="form-control bg-white" id="paymentMethod" aria-label="Payment Method">
+                                            <option value="" selected disabled>Select Payment Method</option>
+                                            <option value="creditCard">Credit Card</option>
+                                            <option value="debitCard">Debit Card</option>
+                                            <option value="paypal">PayPal</option>
+                                            <option value="bankTransfer">Bank Transfer</option>
+                                            <option value="applePay">Apple Pay</option>
+                                            <option value="googlePay">Google Pay</option>
+                                            <option value="cash">Cash</option>
+                                        </select>
+                                        <label for="paymentMethod">Payment Method</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 mt-3 d-none" id="cardDetails">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="cardNumber" placeholder="Card Number" maxlength="16">
+                                        <label for="cardNumber">Card Number</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="cardExpiry" placeholder="MM/YY">
+                                        <label for="cardExpiry">Expiration Date (MM/YY)</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="cardCVV" placeholder="CVV" maxlength="3">
+                                        <label for="cardCVV">CVV</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Special Request" id="message" style="height: 100px"></textarea>
+                                        <label for="message">Special Request <span style="color: #b3abab;">(optional)</span></label>
+                                    </div>
+                                </div>
+                                <div class="col-12 ">
+                                    <button class="btn btn-primary w-100 py-3" type="submit">Book Now</button>
+                                </div>
+                                
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Booking End -->
+
+
+               
+
+         <!-- Footer Start -->
+         <div class="container-fluid bg-dark text-light footer wow fadeIn mt-5 " data-wow-delay="0.1s">
+            <div class="container pb-5">
+                <div class="row g-5">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="bg-primary rounded p-4">
+                            <a href="index.html"> <h1 class="logo">
+                                <span class="easy">Easy</span> <span class="trip" style="color: white;">Trip</span>
+                            </h1>
+                            <p class="text-white mb-0">
+							 <a class="text-dark fw-medium"></a> Easy Trip offers seamless booking for hotels, restaurants, and resorts, with options tailored to your preferences.
+							</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <h6 class="section-title text-start text-primary text-uppercase mb-4">Contact</h6>
+                        <p class="mb-2"><i class="bi bi-geo-alt-fill me-3"></i>123 Street, Chennai, Tamil Nadu, India </p>
+                        <p class="mb-2"><i class="bi bi-telephone-fill me-3"></i>+91 9342751993</p>
+                        <p class="mb-2"><i class="fa fa-envelope me-3"></i>queries@eazytrip.in</p>
+                        
+                    </div>
+                    <div class="col-lg-5 col-md-12">
+                        <div class="row gy-5 g-4">
+                            <div class="col-md-6">
+                                <h6 class="section-title text-start text-primary text-uppercase mb-4">Company</h6>
+                                <a class="btn btn-link" href="about.html">About Us</a>
+                                <a class="btn btn-link" href="contact.html">Contact Us</a>
+                                <a class="btn btn-link" href="room.html">Rooms</a>                               
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="section-title text-start text-primary text-uppercase mb-4">Packages</h6>
+                                <a class="btn btn-link" href="service.html">Food & Restaurant</a>
+                                <a class="btn btn-link" href="service.html">Spa & Fitness</a>
+                                <a class="btn btn-link" href="service.html">Sports & Gaming</a>
+                                <a class="btn btn-link" href="service.html">Event & Party</a>
+                                <a class="btn btn-link" href="service.html">GYM & Yoga</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid bg-dark text-white mt-5 py-4 ">
+                <hr>
+                <div class="container text-center">
+                    <p class="mb-0">&copy; <a href="#" class="text-white">Easy Trip</a>. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    <script src="./navbar.js"></script>
+    
+    <script>
+
+
+$(document).ready(function() {
+    // Fetch user details from session storage
+    const user = JSON.parse(sessionStorage.getItem("user"));
+
+    if (user) {
+        // Set user details in the form
+        $('#userName').val(user.username);
+        $('#useremail').val(user.email);
+    }
+
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const roomName = urlParams.get('room');
+    const roomCost = urlParams.get('cost');
+    const packageName = urlParams.get('package');
+    const packagePrice = urlParams.get('price');
+
+    console.log("Room Name:", roomName);
+    console.log("Room Cost:", roomCost);
+    console.log("Package Name:", packageName);
+    console.log("Package Price:", packagePrice);
+
+    if (roomName && roomCost) {
+        // If room details are present in the URL
+        $('#selectedRoom').val(roomName);  // Set the selected room in the dropdown
+        $('#roomCost').text(`Room Cost: ${roomCost}`);  // Display the room cost
+    } else if (packageName && packagePrice) {
+        // If package details are present in the URL
+        $('#selectedRoom').html(`<option value="${packageName}" selected>${packageName}</option>`); // Display the selected package
+        $('#roomCost').html(`<p class="fw-semi-bold">Price: ${packagePrice} per person</p>`);  // Display the package price
+    } else {
+        console.log("No room or package details found in the URL.");
+    }
+
+
+
+
+
+    
+    $(function () {
+        $('#date3').datetimepicker({
+            format: 'L LT' // You can customize this to include time by using 'L LT' for date and time
+        });
+        $('#date4').datetimepicker({
+            format: 'L LT'
+        });
+    });
+
+
+});
+
+// Payment method and form submission logic
+document.addEventListener("DOMContentLoaded", () => {
+    const paymentMethodSelect = document.querySelector("#paymentMethod");
+    const cardDetails = document.querySelector("#cardDetails");
+
+    paymentMethodSelect.addEventListener("change", () => {
+        const selectedMethod = paymentMethodSelect.value;
+
+        if (selectedMethod === "creditCard" || selectedMethod === "debitCard") {
+            cardDetails.classList.remove("d-none");
+        } else {
+            cardDetails.classList.add("d-none");
+        }
+    });
+
+    const bookingForm = document.querySelector("#bookingForm");
+    bookingForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const selectedPaymentMethod = paymentMethodSelect.value;
+
+        if (!selectedPaymentMethod) {
+            alert("Please select a payment method.");
+            return;
+        }
+
+        let paymentDetails = {
+            method: selectedPaymentMethod,
+        };
+
+        if (selectedPaymentMethod === "creditCard" || selectedPaymentMethod === "debitCard") {
+            const cardNumber = document.querySelector("#cardNumber").value.trim();
+            const cardExpiry = document.querySelector("#cardExpiry").value.trim();
+            const cardCVV = document.querySelector("#cardCVV").value.trim();
+
+            if (!cardNumber || !cardExpiry || !cardCVV) {
+                alert("Please fill in all card details.");
+                return;
+            }
+
+            paymentDetails.cardNumber = cardNumber;
+            paymentDetails.cardExpiry = cardExpiry;
+            paymentDetails.cardCVV = cardCVV;
+        }
+
+        sessionStorage.setItem("paymentDetails", JSON.stringify(paymentDetails));
+
+        alert(`Booking successful! Payment method: ${selectedPaymentMethod}`);
+        window.location.href = "confirmation.html";
+    });
+});
+
+document.getElementById('userName').addEventListener('invalid', function () {
+    this.setCustomValidity('Please Login.');
+});
+
+document.getElementById('userName').addEventListener('input', function () {
+    this.setCustomValidity(''); // Clears the message when the user starts typing
+});
+
+document.getElementById('useremail').addEventListener('invalid', function () {
+    if (this.validity.valueMissing) {
+        // If the email field is empty
+        this.setCustomValidity('Please Login.');
+    } else if (this.validity.typeMismatch) {
+        // If the entered email is not in the correct format
+        this.setCustomValidity('Please enter a valid email address.');
+    }
+});
+
+document.getElementById('useremail').addEventListener('input', function () {
+    // Clear the custom validation message once the user starts typing
+    this.setCustomValidity('');
+});
+
+
+
+
+
+    </script>
+
+    
+        
+</body>
+
+</html>
