@@ -77,10 +77,31 @@ document.addEventListener("DOMContentLoaded", () => {
         sessionStorage.setItem("user", JSON.stringify(user));
         alert("User registered successfully!");
 
-        // Close the modal
-        const signupModal = document.querySelector("#signupModal");
-        const modal = bootstrap.Modal.getInstance(signupModal);
-        modal.hide();
+        
+    });
+
+    document.getElementById("signupLink").addEventListener("click", function(event) {
+        event.preventDefault();
+
+        // Close the login modal and open the signup modal
+        const loginModal = bootstrap.Modal.getInstance(document.querySelector('#loginModal'));
+        if (loginModal) {
+            loginModal.hide();
+        }
+        const signupModal = new bootstrap.Modal(document.querySelector('#signupModal'));
+        signupModal.show();
+    });
+
+    document.getElementById("loginLinkFromSignup").addEventListener("click", function(event) {
+        event.preventDefault();
+
+        // Close the signup modal and open the login modal
+        const signupModal = bootstrap.Modal.getInstance(document.querySelector('#signupModal'));
+        if (signupModal) {
+            signupModal.hide();
+        }
+        const loginModal = new bootstrap.Modal(document.querySelector('#loginModal'));
+        loginModal.show();
     });
 
     
@@ -113,10 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 sessionStorage.setItem("roomDetails", selectedRoom);
             }
     
-            // Close the login modal
-            const loginModal = document.querySelector("#loginModal");
-            const modal = bootstrap.Modal.getInstance(loginModal);
-            modal.hide();
+           
     
             // Redirect to booking page
             window.location.href = "index.html";
