@@ -1,3 +1,6 @@
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
     // Toggle password visibility
     function togglePasswordVisibility(toggleButton, passwordField) {
@@ -77,7 +80,13 @@ document.addEventListener("DOMContentLoaded", () => {
         sessionStorage.setItem("user", JSON.stringify(user));
         alert("User registered successfully!");
 
-        
+        // Automatically transition to the login modal after signup
+        const signupModal = bootstrap.Modal.getInstance(document.querySelector('#signupModal'));
+        if (signupModal) {
+            signupModal.hide();
+        }
+        const loginModal = new bootstrap.Modal(document.querySelector('#loginModal'));
+        loginModal.show();
     });
 
     document.getElementById("signupLink").addEventListener("click", function(event) {
@@ -104,16 +113,15 @@ document.addEventListener("DOMContentLoaded", () => {
         loginModal.show();
     });
 
-    
-
+    const loginForm = document.querySelector("#loginForm");
     loginForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const username = document.querySelector("#username").value;
         const email = document.querySelector("#email").value;
         const password = document.querySelector("#password").value;
-    
+
         const storedUser = JSON.parse(sessionStorage.getItem("user"));
-    
+
         if (
             storedUser &&
             storedUser.username === username &&
@@ -121,43 +129,38 @@ document.addEventListener("DOMContentLoaded", () => {
             storedUser.password === password
         ) {
             alert("Login successful!");
-    
+
             // Update the navbar after login
             updateNavbarAfterLogin(username);
-    
+
             // Mark user as logged in
             sessionStorage.setItem("isLoggedIn", true);
-    
+
             // Store the selected room details (if any)
             const selectedRoom = sessionStorage.getItem("selectedRoom");
             if (selectedRoom) {
                 sessionStorage.setItem("roomDetails", selectedRoom);
             }
-    
-           
-    
+
             // Redirect to booking page
             window.location.href = "index.html";
         } else {
             alert("Invalid login credentials!");
         }
     });
-    
 
     // Handle logout
-    const logoutBtn = document.querySelector("#logoutBtn");
-    logoutBtn.addEventListener("click", () => {
-       
-        // sessionStorage.setItem("isLoggedIn", false);
-        sessionStorage.removeItem('user');
-    sessionStorage.removeItem('isLoggedIn');
-
-        const userDropdown = document.querySelector("#userDropdown");
-        const loginLink = document.querySelector("#loginLink");
-
-        userDropdown.classList.add("d-none");
-        loginLink.style.display = "block";
-        alert("Logged out successfully!");
+    document.querySelector("#logoutBtn").addEventListener("click", (event) => {
+        event.preventDefault();
+    
+        // Clear session storage
+        sessionStorage.removeItem("isLoggedIn");
+        sessionStorage.removeItem("user");
+    
+        // Redirect to home page or login page after logout
+        window.location.href = "index.html"; // Or another page
+    
+        alert("You have been logged out successfully!");
     });
 
     // Check password strength function
@@ -186,9 +189,8 @@ document.addEventListener("DOMContentLoaded", () => {
         } catch (error) {
             console.error("Failed to check if password is compromised:", error);
             alert("Unable to check if the password is compromised due to a network error. Please check your connection and try again.");
-            return false; // Returning false to indicate the password is not compromised (due to the inability to check)
+            return false;
         }
     }
-
-    
 });
+
