@@ -591,8 +591,248 @@ features: "Private Beach, Outdoor Pool, Spa Bath, Restaurant, Free Parking, Sea 
 },
 
     };
+    const turfData = {
+    "greenfield-turf": {
+        title: "Greenfield Turf",
+        images: ["turf1.jpg", "turf2.jpg", "turf3.jpg"],
+        price: "₹2000/hour",
+        address: "123 Sports Arena, Chennai",
+        description: "A top-notch soccer turf with high-quality grass and ample space for 11-a-side games.",
+        features: ["Floodlights", "Changing Rooms", "Parking", "Cafeteria"]
+    },
+    // Add more turf data as needed
+};
 
     
+
+// document.querySelector("#bookButton").addEventListener("click", function(event) {
+//     event.preventDefault(); // Prevent default anchor behavior
+
+//     const urlParams = new URLSearchParams(window.location.search);
+//     const roomParam = urlParams.get("room");
+//     const resortParam = urlParams.get("resort");
+//     const restaurantParam = urlParams.get("restaurant");
+
+//     let selectedTitle = "";
+//     let selectedPrice = "";
+
+//     if (roomParam && roomData[roomParam.toLowerCase()]) {
+//         selectedTitle = roomData[roomParam.toLowerCase()].title;
+//         selectedPrice = roomData[roomParam.toLowerCase()].price;
+//     } else if (resortParam && resortData[resortParam.toLowerCase()]) {
+//         selectedTitle = resortData[resortParam.toLowerCase()].title;
+//         selectedPrice = resortData[resortParam.toLowerCase()].price;
+//     } else if (restaurantParam && restaurantData[restaurantParam.toLowerCase()]) {
+//         selectedTitle = restaurantData[restaurantParam.toLowerCase()].title;
+//         selectedPrice = restaurantData[restaurantParam.toLowerCase()].priceRange;
+//     }
+
+//     console.log("Selected Title:", selectedTitle);
+//     console.log("Selected Price:", selectedPrice);
+
+//     if (selectedTitle && selectedPrice) {
+//         // Navigate to booking.html with the selected details as URL parameters
+//         window.location.href = `booking.html?room=${encodeURIComponent(selectedTitle)}&cost=${encodeURIComponent(selectedPrice)}`;
+//     }
+// });
+
+   
+
+//     function updateRoomDetails(room) {
+//     const roomTitle = document.querySelector("#roomTitle");
+//     const roomCarousel = document.querySelector("#carouselImages");
+//     const roomPrice = document.querySelector("#roomPrice");
+//     const roomAddress = document.querySelector('#roomAddress');
+//     const roomDescription = document.querySelector("#roomDescription");
+//     const roomFeatures = document.querySelector("#roomFeatures");
+
+//     // Fetch the images array from the selected room
+//     const images = roomData[room].images;
+
+//     // Check if images is defined and is an array
+//     if (Array.isArray(images)) {
+//         // Clear previous carousel items
+//         roomCarousel.innerHTML = "";
+
+//         // Populate the carousel with images
+//         images.forEach((imgSrc, index) => {
+//             const isActive = index === 0 ? "active" : "";
+//             roomCarousel.innerHTML += `
+//                 <div class="carousel-item ${isActive}">
+//                     <img src="${imgSrc}" class="d-block w-100" alt="Room Image ${index + 1}">
+//                 </div>
+//             `;
+//         });
+//     } else {
+//         console.error("Images array for room", room, "is undefined or not an array.");
+//     }
+
+//     // Update room details
+//     roomTitle.textContent = roomData[room].title;
+//     roomPrice.textContent = roomData[room].price;
+//     roomAddress.textContent = roomData[room].address;
+//     roomDescription.textContent = roomData[room].description;
+//     roomFeatures.textContent = `Features: ${roomData[room].features}`;
+// }
+
+
+// function displayOtherRooms(currentRoom) {
+//     const otherRoomsContainer = document.querySelector(".other-rooms");
+//     otherRoomsContainer.innerHTML = "";
+
+//     for (const room in roomData) {
+//         if (room !== currentRoom) {
+//             const roomItem = document.createElement("div");
+//             roomItem.classList.add("room-item");
+
+//             // Use the first image from the images array for the room
+//             const firstImage = Array.isArray(roomData[room].images) ? roomData[room].images[0] : '';
+
+//             roomItem.innerHTML = `
+//                 <img src="${firstImage}" alt="${roomData[room].title}" class="other-room-image">
+//                 <div class="other-room-details">
+//                     <h5>${roomData[room].title}</h5>
+//                     <p>${roomData[room].price}</p>
+//                     <a href="room-details.html?room=${room}" class="btn btn-secondary">View Details</a>
+//                 </div>
+//             `;
+
+//             otherRoomsContainer.appendChild(roomItem);
+//         }
+//     }
+// }
+
+
+// function updateResortDetails(resort) {
+//     const roomTitle = document.querySelector("#roomTitle");
+//     const roomCarousel = document.querySelector("#carouselImages");
+//     const roomPrice = document.querySelector("#roomPrice");
+//     const roomAddress = document.querySelector('#roomAddress');
+//     const roomDescription = document.querySelector("#roomDescription");
+//     const roomFeatures = document.querySelector("#roomFeatures");
+
+//     // Fetch the images array from the selected room
+//     const images = resortData[resort].images;
+
+//     // Check if images is defined and is an array
+//     if (Array.isArray(images)) {
+//         // Clear previous carousel items
+//         roomCarousel.innerHTML = "";
+
+//         // Populate the carousel with images
+//         images.forEach((imgSrc, index) => {
+//             const isActive = index === 0 ? "active" : "";
+//             roomCarousel.innerHTML += `
+//                 <div class="carousel-item ${isActive}">
+//                     <img src="${imgSrc}" class="d-block w-100" alt="Room Image ${index + 1}">
+//                 </div>
+//             `;
+//         });
+//     } else {
+//         console.error("Images array for room", resort, "is undefined or not an array.");
+//     }
+
+//     // Update room details
+//     roomTitle.textContent = resortData[resort].title;
+//     roomPrice.textContent = resortData[resort].price;
+//     roomAddress.textContent = resortData[resort].address;
+//     roomDescription.textContent = resortData[resort].description;
+//     roomFeatures.textContent = `Features: ${resortData[resort].features}`;
+// }
+   
+
+
+   
+// function displayOtherResorts(currentResort) {
+//     const otherRoomsContainer = document.querySelector(".other-rooms");
+//     otherRoomsContainer.innerHTML = "";
+
+//     for (const resort in resortData) {
+//         if (resort !== currentResort) {
+//             const resortItem = document.createElement("div");
+//             resortItem.classList.add("room-item");
+
+//             // Use the first image from the images array for the resort
+//             const firstImage = Array.isArray(resortData[resort].images) ? resortData[resort].images[0] : '';
+
+//             resortItem.innerHTML = `
+//                 <img src="${firstImage}" alt="${resortData[resort].title}" class="other-room-image">
+//                 <div class="other-room-details">
+//                     <h5>${resortData[resort].title}</h5>
+//                     <p>${resortData[resort].price}</p>
+//                     <a href="room-details.html?resort=${resort}" class="btn btn-secondary">View Details</a>
+//                 </div>
+//             `;
+
+//             otherRoomsContainer.appendChild(resortItem);
+//         }
+//     }
+// }
+
+
+//     function updateRestaurantDetails(restaurant) {
+//     const restaurantTitle = document.querySelector("#roomTitle");
+//     const restaurantCarousel = document.querySelector("#carouselImages");
+//     const restaurantPrice = document.querySelector("#roomPrice");
+//     const restaurantAddress = document.querySelector("#roomAddress");
+//     const restaurantDescription = document.querySelector("#roomDescription");
+//     const restaurantFeatures = document.querySelector("#roomFeatures");
+
+//     // Fetch the images array from the selected restaurant
+//     const images = restaurantData[restaurant].images;
+
+//     // Check if images is defined and is an array
+//     if (Array.isArray(images)) {
+//         // Clear previous carousel items
+//         restaurantCarousel.innerHTML = "";
+
+//         // Populate the carousel with images
+//         images.forEach((imgSrc, index) => {
+//             const isActive = index === 0 ? "active" : "";
+//             restaurantCarousel.innerHTML += `
+//                 <div class="carousel-item ${isActive}">
+//                     <img src="${imgSrc}" class="d-block w-100" alt="Restaurant Image ${index + 1}">
+//                 </div>
+//             `;
+//         });
+//     } else {
+//         console.error("Images array for restaurant", restaurant, "is undefined or not an array.");
+//     }
+
+//     // Update restaurant details
+//     restaurantTitle.textContent = restaurantData[restaurant].title;
+//     restaurantPrice.textContent = restaurantData[restaurant].priceRange;
+//     restaurantAddress.textContent = restaurantData[restaurant].address;
+//     restaurantDescription.textContent = restaurantData[restaurant].description;
+//     restaurantFeatures.textContent = `Features: ${restaurantData[restaurant].features}`;
+// }
+
+
+// function displayOtherRestaurants(currentRestaurant) {
+//     const otherRoomsContainer = document.querySelector(".other-rooms");
+//     otherRoomsContainer.innerHTML = "";
+
+//     for (const restaurant in restaurantData) {
+//         if (restaurant !== currentRestaurant) {
+//             const restaurantItem = document.createElement("div");
+//             restaurantItem.classList.add("room-item");
+
+//             // Use the first image from the images array for the restaurant
+//             const firstImage = Array.isArray(restaurantData[restaurant].images) ? restaurantData[restaurant].images[0] : '';
+
+//             restaurantItem.innerHTML = `
+//                 <img src="${firstImage}" alt="${restaurantData[restaurant].title}" class="other-room-image">
+//                 <div class="other-room-details">
+//                     <h5>${restaurantData[restaurant].title}</h5>
+//                     <p>${restaurantData[restaurant].priceRange}</p>
+//                     <a href="room-details.html?restaurant=${restaurant}" class="btn btn-secondary">View Details</a>
+//                 </div>
+//             `;
+
+//             otherRoomsContainer.appendChild(restaurantItem);
+//         }
+//     }
+// }
 
 document.querySelector("#bookButton").addEventListener("click", function(event) {
     event.preventDefault(); // Prevent default anchor behavior
@@ -601,6 +841,7 @@ document.querySelector("#bookButton").addEventListener("click", function(event) 
     const roomParam = urlParams.get("room");
     const resortParam = urlParams.get("resort");
     const restaurantParam = urlParams.get("restaurant");
+    const turfParam = urlParams.get("turf");
 
     let selectedTitle = "";
     let selectedPrice = "";
@@ -614,6 +855,9 @@ document.querySelector("#bookButton").addEventListener("click", function(event) 
     } else if (restaurantParam && restaurantData[restaurantParam.toLowerCase()]) {
         selectedTitle = restaurantData[restaurantParam.toLowerCase()].title;
         selectedPrice = restaurantData[restaurantParam.toLowerCase()].priceRange;
+    } else if (turfParam && turfData[turfParam.toLowerCase()]) {
+        selectedTitle = turfData[turfParam.toLowerCase()].title;
+        selectedPrice = turfData[turfParam.toLowerCase()].price;
     }
 
     console.log("Selected Title:", selectedTitle);
@@ -625,9 +869,7 @@ document.querySelector("#bookButton").addEventListener("click", function(event) 
     }
 });
 
-   
-
-    function updateRoomDetails(room) {
+function updateRoomDetails(room) {
     const roomTitle = document.querySelector("#roomTitle");
     const roomCarousel = document.querySelector("#carouselImages");
     const roomPrice = document.querySelector("#roomPrice");
@@ -635,15 +877,10 @@ document.querySelector("#bookButton").addEventListener("click", function(event) 
     const roomDescription = document.querySelector("#roomDescription");
     const roomFeatures = document.querySelector("#roomFeatures");
 
-    // Fetch the images array from the selected room
     const images = roomData[room].images;
 
-    // Check if images is defined and is an array
     if (Array.isArray(images)) {
-        // Clear previous carousel items
         roomCarousel.innerHTML = "";
-
-        // Populate the carousel with images
         images.forEach((imgSrc, index) => {
             const isActive = index === 0 ? "active" : "";
             roomCarousel.innerHTML += `
@@ -656,7 +893,6 @@ document.querySelector("#bookButton").addEventListener("click", function(event) 
         console.error("Images array for room", room, "is undefined or not an array.");
     }
 
-    // Update room details
     roomTitle.textContent = roomData[room].title;
     roomPrice.textContent = roomData[room].price;
     roomAddress.textContent = roomData[room].address;
@@ -664,6 +900,98 @@ document.querySelector("#bookButton").addEventListener("click", function(event) 
     roomFeatures.textContent = `Features: ${roomData[room].features}`;
 }
 
+function updateResortDetails(resort) {
+    const resortTitle = document.querySelector("#roomTitle");
+    const resortCarousel = document.querySelector("#carouselImages");
+    const resortPrice = document.querySelector("#roomPrice");
+    const resortAddress = document.querySelector('#roomAddress');
+    const resortDescription = document.querySelector("#roomDescription");
+    const resortFeatures = document.querySelector("#roomFeatures");
+
+    const images = resortData[resort].images;
+
+    if (Array.isArray(images)) {
+        resortCarousel.innerHTML = "";
+        images.forEach((imgSrc, index) => {
+            const isActive = index === 0 ? "active" : "";
+            resortCarousel.innerHTML += `
+                <div class="carousel-item ${isActive}">
+                    <img src="${imgSrc}" class="d-block w-100" alt="Resort Image ${index + 1}">
+                </div>
+            `;
+        });
+    } else {
+        console.error("Images array for resort", resort, "is undefined or not an array.");
+    }
+
+    resortTitle.textContent = resortData[resort].title;
+    resortPrice.textContent = resortData[resort].price;
+    resortAddress.textContent = resortData[resort].address;
+    resortDescription.textContent = resortData[resort].description;
+    resortFeatures.textContent = `Features: ${resortData[resort].features}`;
+}
+
+function updateRestaurantDetails(restaurant) {
+    const restaurantTitle = document.querySelector("#roomTitle");
+    const restaurantCarousel = document.querySelector("#carouselImages");
+    const restaurantPrice = document.querySelector("#roomPrice");
+    const restaurantAddress = document.querySelector('#roomAddress');
+    const restaurantDescription = document.querySelector("#roomDescription");
+    const restaurantFeatures = document.querySelector("#roomFeatures");
+
+    const images = restaurantData[restaurant].images;
+
+    if (Array.isArray(images)) {
+        restaurantCarousel.innerHTML = "";
+        images.forEach((imgSrc, index) => {
+            const isActive = index === 0 ? "active" : "";
+            restaurantCarousel.innerHTML += `
+                <div class="carousel-item ${isActive}">
+                    <img src="${imgSrc}" class="d-block w-100" alt="Restaurant Image ${index + 1}">
+                </div>
+            `;
+        });
+    } else {
+        console.error("Images array for restaurant", restaurant, "is undefined or not an array.");
+    }
+
+    restaurantTitle.textContent = restaurantData[restaurant].title;
+    restaurantPrice.textContent = restaurantData[restaurant].priceRange;
+    restaurantAddress.textContent = restaurantData[restaurant].address;
+    restaurantDescription.textContent = restaurantData[restaurant].description;
+    restaurantFeatures.textContent = `Features: ${restaurantData[restaurant].features}`;
+}
+
+function updateTurfDetails(turf) {
+    const turfTitle = document.querySelector("#roomTitle");
+    const turfCarousel = document.querySelector("#carouselImages");
+    const turfPrice = document.querySelector("#roomPrice");
+    const turfAddress = document.querySelector('#roomAddress');
+    const turfDescription = document.querySelector("#roomDescription");
+    const turfFeatures = document.querySelector("#roomFeatures");
+
+    const images = turfData[turf].images;
+
+    if (Array.isArray(images)) {
+        turfCarousel.innerHTML = "";
+        images.forEach((imgSrc, index) => {
+            const isActive = index === 0 ? "active" : "";
+            turfCarousel.innerHTML += `
+                <div class="carousel-item ${isActive}">
+                    <img src="${imgSrc}" class="d-block w-100" alt="Turf Image ${index + 1}">
+                </div>
+            `;
+        });
+    } else {
+        console.error("Images array for turf", turf, "is undefined or not an array.");
+    }
+
+    turfTitle.textContent = turfData[turf].title;
+    turfPrice.textContent = turfData[turf].price;
+    turfAddress.textContent = turfData[turf].address;
+    turfDescription.textContent = turfData[turf].description;
+    turfFeatures.textContent = `Features: ${turfData[turf].features}`;
+}
 
 function displayOtherRooms(currentRoom) {
     const otherRoomsContainer = document.querySelector(".other-rooms");
@@ -674,7 +1002,6 @@ function displayOtherRooms(currentRoom) {
             const roomItem = document.createElement("div");
             roomItem.classList.add("room-item");
 
-            // Use the first image from the images array for the room
             const firstImage = Array.isArray(roomData[room].images) ? roomData[room].images[0] : '';
 
             roomItem.innerHTML = `
@@ -691,47 +1018,6 @@ function displayOtherRooms(currentRoom) {
     }
 }
 
-
-function updateResortDetails(resort) {
-    const roomTitle = document.querySelector("#roomTitle");
-    const roomCarousel = document.querySelector("#carouselImages");
-    const roomPrice = document.querySelector("#roomPrice");
-    const roomAddress = document.querySelector('#roomAddress');
-    const roomDescription = document.querySelector("#roomDescription");
-    const roomFeatures = document.querySelector("#roomFeatures");
-
-    // Fetch the images array from the selected room
-    const images = resortData[resort].images;
-
-    // Check if images is defined and is an array
-    if (Array.isArray(images)) {
-        // Clear previous carousel items
-        roomCarousel.innerHTML = "";
-
-        // Populate the carousel with images
-        images.forEach((imgSrc, index) => {
-            const isActive = index === 0 ? "active" : "";
-            roomCarousel.innerHTML += `
-                <div class="carousel-item ${isActive}">
-                    <img src="${imgSrc}" class="d-block w-100" alt="Room Image ${index + 1}">
-                </div>
-            `;
-        });
-    } else {
-        console.error("Images array for room", resort, "is undefined or not an array.");
-    }
-
-    // Update room details
-    roomTitle.textContent = resortData[resort].title;
-    roomPrice.textContent = resortData[resort].price;
-    roomAddress.textContent = resortData[resort].address;
-    roomDescription.textContent = resortData[resort].description;
-    roomFeatures.textContent = `Features: ${resortData[resort].features}`;
-}
-   
-
-
-   
 function displayOtherResorts(currentResort) {
     const otherRoomsContainer = document.querySelector(".other-rooms");
     otherRoomsContainer.innerHTML = "";
@@ -741,7 +1027,6 @@ function displayOtherResorts(currentResort) {
             const resortItem = document.createElement("div");
             resortItem.classList.add("room-item");
 
-            // Use the first image from the images array for the resort
             const firstImage = Array.isArray(resortData[resort].images) ? resortData[resort].images[0] : '';
 
             resortItem.innerHTML = `
@@ -758,45 +1043,6 @@ function displayOtherResorts(currentResort) {
     }
 }
 
-
-    function updateRestaurantDetails(restaurant) {
-    const restaurantTitle = document.querySelector("#roomTitle");
-    const restaurantCarousel = document.querySelector("#carouselImages");
-    const restaurantPrice = document.querySelector("#roomPrice");
-    const restaurantAddress = document.querySelector("#roomAddress");
-    const restaurantDescription = document.querySelector("#roomDescription");
-    const restaurantFeatures = document.querySelector("#roomFeatures");
-
-    // Fetch the images array from the selected restaurant
-    const images = restaurantData[restaurant].images;
-
-    // Check if images is defined and is an array
-    if (Array.isArray(images)) {
-        // Clear previous carousel items
-        restaurantCarousel.innerHTML = "";
-
-        // Populate the carousel with images
-        images.forEach((imgSrc, index) => {
-            const isActive = index === 0 ? "active" : "";
-            restaurantCarousel.innerHTML += `
-                <div class="carousel-item ${isActive}">
-                    <img src="${imgSrc}" class="d-block w-100" alt="Restaurant Image ${index + 1}">
-                </div>
-            `;
-        });
-    } else {
-        console.error("Images array for restaurant", restaurant, "is undefined or not an array.");
-    }
-
-    // Update restaurant details
-    restaurantTitle.textContent = restaurantData[restaurant].title;
-    restaurantPrice.textContent = restaurantData[restaurant].priceRange;
-    restaurantAddress.textContent = restaurantData[restaurant].address;
-    restaurantDescription.textContent = restaurantData[restaurant].description;
-    restaurantFeatures.textContent = `Features: ${restaurantData[restaurant].features}`;
-}
-
-
 function displayOtherRestaurants(currentRestaurant) {
     const otherRoomsContainer = document.querySelector(".other-rooms");
     otherRoomsContainer.innerHTML = "";
@@ -806,7 +1052,6 @@ function displayOtherRestaurants(currentRestaurant) {
             const restaurantItem = document.createElement("div");
             restaurantItem.classList.add("room-item");
 
-            // Use the first image from the images array for the restaurant
             const firstImage = Array.isArray(restaurantData[restaurant].images) ? restaurantData[restaurant].images[0] : '';
 
             restaurantItem.innerHTML = `
@@ -823,26 +1068,56 @@ function displayOtherRestaurants(currentRestaurant) {
     }
 }
 
+function displayOtherTurfs(currentTurf) {
+    const otherRoomsContainer = document.querySelector(".other-rooms");
+    otherRoomsContainer.innerHTML = "";
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const resortParam = urlParams.get("resort");
-    const roomParam = urlParams.get("room");
-    const restaurantParam = urlParams.get("restaurant");
+    for (const turf in turfData) {
+        if (turf !== currentTurf) {
+            const turfItem = document.createElement("div");
+            turfItem.classList.add("room-item");
 
-    if (restaurantParam && restaurantData[restaurantParam.toLowerCase()]) {
-        updateRestaurantDetails(restaurantParam.toLowerCase());
-        displayOtherRestaurants(restaurantParam.toLowerCase());
-    } else if (resortParam && resortData[resortParam.toLowerCase()]) {
-        updateResortDetails(resortParam.toLowerCase());
-        displayOtherResorts(resortParam.toLowerCase());
-    } else if (roomParam && roomData[roomParam.toLowerCase()]) {
-        updateRoomDetails(roomParam.toLowerCase());
-        displayOtherRooms(roomParam.toLowerCase());
-    } else {
-        // Default behavior, fallback to displaying a room
-        updateRoomDetails("junior-suite");
-        displayOtherRooms("junior-suite");
+            const firstImage = Array.isArray(turfData[turf].images) ? turfData[turf].images[0] : '';
+
+            turfItem.innerHTML = `
+                <img src="${firstImage}" alt="${turfData[turf].title}" class="other-room-image">
+                <div class="other-room-details">
+                    <h5>${turfData[turf].title}</h5>
+                    <p>${turfData[turf].price}</p>
+                    <a href="room-details.html?turf=${turf}" class="btn btn-secondary">View Details</a>
+                </div>
+            `;
+
+            otherRoomsContainer.appendChild(turfItem);
+        }
     }
+}
+
+
+const urlParams = new URLSearchParams(window.location.search);
+const resortParam = urlParams.get("resort");
+const roomParam = urlParams.get("room");
+const restaurantParam = urlParams.get("restaurant");
+const turfParam = urlParams.get("turf"); // Add turf parameter
+
+if (restaurantParam && restaurantData[restaurantParam.toLowerCase()]) {
+    updateRestaurantDetails(restaurantParam.toLowerCase());
+    displayOtherRestaurants(restaurantParam.toLowerCase());
+} else if (resortParam && resortData[resortParam.toLowerCase()]) {
+    updateResortDetails(resortParam.toLowerCase());
+    displayOtherResorts(resortParam.toLowerCase());
+} else if (roomParam && roomData[roomParam.toLowerCase()]) {
+    updateRoomDetails(roomParam.toLowerCase());
+    displayOtherRooms(roomParam.toLowerCase());
+} else if (turfParam && turfData[turfParam.toLowerCase()]) { // Add turf condition
+    updateTurfDetails(turfParam.toLowerCase());
+    displayOtherTurfs(turfParam.toLowerCase());
+} else {
+    // Default behavior, fallback to displaying a room
+    updateRoomDetails("junior-suite");
+    displayOtherRooms("junior-suite");
+}
+
 });
 
 
