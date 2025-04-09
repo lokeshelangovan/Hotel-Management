@@ -32,6 +32,8 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
     <style>
         /* Cost Display Styling */
 #roomCost {
@@ -588,6 +590,35 @@ document.getElementById('useremail').addEventListener('input', function () {
     // Clear the custom validation message once the user starts typing
     this.setCustomValidity('');
 });
+
+
+
+  (function () {
+    emailjs.init("exB6v2sdkFRDHQQCm"); // Replace with your actual public key
+  })();
+
+  document.getElementById("bookingForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const templateParams = {
+      userName: document.getElementById("userName").value,
+      useremail: document.getElementById("useremail").value,
+      checkin: document.getElementById("checkin").value,
+      checkout: document.getElementById("checkout").value,
+      selectedRoom: document.getElementById("selectedRoom").value,
+      paymentMethod: document.getElementById("paymentMethod").value,
+    };
+
+    emailjs.send("service_02jqjs3", "template_olssn6e", templateParams)
+      .then(function (response) {
+        alert("✅ Booking confirmation email sent successfully!");
+        console.log("SUCCESS!", response.status, response.text);
+      }, function (error) {
+        alert("❌ Failed to send confirmation email. Please try again.");
+        console.error("FAILED...", error);
+      });
+  });
+
 
 
 
